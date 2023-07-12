@@ -13,8 +13,8 @@ const FlexButtons = ({
 }) => {
   return (
     <Wrapper>
-      {flexDirections.map((flexDirection) => (
-        <Button onClick={() => setFlexDirection(flexDirection)}>
+      {flexDirections.map((flexDirection, i) => (
+        <Button onClick={() => setFlexDirection(flexDirection)} key={i}>
           {flexDirection}
         </Button>
       ))}
@@ -27,6 +27,7 @@ export default FlexButtons;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
   gap: 15px;
 `;
 

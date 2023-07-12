@@ -33,4 +33,5 @@ const FlexList = () => {
 
 export default FlexList;
 
-const Wrapper = styled.section``;
+const Wrapper = styled.section`
+width:100%:`;

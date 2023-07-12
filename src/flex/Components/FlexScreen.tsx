@@ -13,9 +13,9 @@ const FlexScreen = ({
   gap: number;
 }) => {
   return (
-    <Wrapper flexDirection={flexDirection} gap={gap}>
-      {flexDirections.map((flexDirection) => (
-        <Flex flexDirection={flexDirection} />
+    <Wrapper flexdirection={flexDirection} gap={gap}>
+      {flexDirections.map((flexDirection, i) => (
+        <Flex flexdirection={flexDirection} key={i} />
       ))}
     </Wrapper>
   );
@@ -23,18 +23,18 @@ const FlexScreen = ({
 
 export default FlexScreen;
 
-const Flex = ({ flexDirection }: { flexDirection: string }) => {
-  return <li>{flexDirection}</li>;
+const Flex = ({ flexdirection }: { flexdirection: string }) => {
+  return <li>{flexdirection}</li>;
 };
 
 const Wrapper = styled.ul<{
-  flexDirection: (typeof FLEX_DIRECTION_ENUM)[keyof typeof FLEX_DIRECTION_ENUM];
+  flexdirection: (typeof FLEX_DIRECTION_ENUM)[keyof typeof FLEX_DIRECTION_ENUM];
   gap: number;
 }>`
   border: 1px skyblue solid;
   padding: 32px 60px;
   display: flex;
-  flex-direction: ${({ flexDirection }) => flexDirection};
+  flex-direction: ${({ flexdirection }) => flexdirection};
   gap: ${({ gap }) => `${gap}px`};
   li {
     list-style-type: none;
@@ -42,5 +42,6 @@ const Wrapper = styled.ul<{
     padding: 10px 20px;
     background-color: skyblue;
     border-radius: 10px;
+    width: 140px;
   }
 `;
