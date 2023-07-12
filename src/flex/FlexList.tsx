@@ -22,6 +22,9 @@ const FlexList = () => {
         setFlexDirection={setFlexDirection}
       />
 
+      <Code>{`display : flex; 
+flex-direction : ${flexDirection};`}</Code>
+
       <FlexScreen
         flexDirections={Object.values(FLEX_DIRECTION_ENUM)}
         flexDirection={flexDirection}
@@ -34,4 +37,17 @@ const FlexList = () => {
 export default FlexList;
 
 const Wrapper = styled.section`
-width:100%:`;
+width:100%:
+
+
+
+`;
+
+const Code = styled.pre`
+  padding: 30px;
+  margin: 30px auto;
+  width: 500px;
+  border: 1px solid skyblue;
+  border-radius: 10px;
+  line-height: 1.5rem;
+`;

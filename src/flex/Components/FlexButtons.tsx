@@ -13,11 +13,16 @@ const FlexButtons = ({
 }) => {
   return (
     <Wrapper>
-      {flexDirections.map((flexDirection, i) => (
-        <Button onClick={() => setFlexDirection(flexDirection)} key={i}>
-          {flexDirection}
-        </Button>
-      ))}
+      <Title>
+        button을 클릭하면 <strong>flex-direction</strong> 속성이 변경됩니다.
+      </Title>
+      <ButtonWrapper>
+        {flexDirections.map((flexDirection, i) => (
+          <Button onClick={() => setFlexDirection(flexDirection)} key={i}>
+            {flexDirection}
+          </Button>
+        ))}
+      </ButtonWrapper>
     </Wrapper>
   );
 };
@@ -26,9 +31,20 @@ export default FlexButtons;
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   gap: 15px;
 `;
 
-const Button = styled.button``;
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+`;
+const Button = styled.button`
+  width: 150px;
+`;
+
+const Title = styled.h2`
+  text-align: center;
+`;

@@ -35,7 +35,11 @@ const Wrapper = styled.ul<{
   padding: 32px 60px;
   display: flex;
   flex-direction: ${({ flexdirection }) => flexdirection};
+
   gap: ${({ gap }) => `${gap}px`};
+
+  width: 80%;
+  height: 200px;
   li {
     list-style-type: none;
     list-style: none;
@@ -43,5 +47,8 @@ const Wrapper = styled.ul<{
     background-color: skyblue;
     border-radius: 10px;
     width: 140px;
+    height: 25px;
+    display: flex;
+    align-items: center;
   }
 `;
