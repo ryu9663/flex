@@ -1,21 +1,25 @@
 import styled from 'styled-components';
-
-import { FLEX_DIRECTION_ENUM } from '../FlexList';
+import { FLEX_DIRECTION_ENUM, JUSTIFY_CONTENT_ENUM } from '../types';
 
 const FlexScreen = ({
-  flexDirections,
-
+  texts,
   flexDirection,
+  justifyContent,
   gap,
 }: {
-  flexDirections: (typeof FLEX_DIRECTION_ENUM)[keyof typeof FLEX_DIRECTION_ENUM][];
+  texts: string[];
   flexDirection: (typeof FLEX_DIRECTION_ENUM)[keyof typeof FLEX_DIRECTION_ENUM];
+  justifyContent: (typeof JUSTIFY_CONTENT_ENUM)[keyof typeof JUSTIFY_CONTENT_ENUM];
   gap: number;
 }) => {
   return (
-    <Wrapper flexdirection={flexDirection} gap={gap}>
-      {flexDirections.map((flexDirection, i) => (
-        <Flex flexdirection={flexDirection} key={i} />
+    <Wrapper
+      flexdirection={flexDirection}
+      justifyContent={justifyContent}
+      gap={gap}
+    >
+      {texts.map((text, i) => (
+        <Flex text={text} key={i} />
       ))}
     </Wrapper>
   );
@@ -23,23 +27,27 @@ const FlexScreen = ({
 
 export default FlexScreen;
 
-const Flex = ({ flexdirection }: { flexdirection: string }) => {
-  return <li>{flexdirection}</li>;
+const Flex = ({ text }: { text: string }) => {
+  return <li>{text}</li>;
 };
 
 const Wrapper = styled.ul<{
   flexdirection: (typeof FLEX_DIRECTION_ENUM)[keyof typeof FLEX_DIRECTION_ENUM];
+  justifyContent: (typeof JUSTIFY_CONTENT_ENUM)[keyof typeof JUSTIFY_CONTENT_ENUM];
   gap: number;
 }>`
   border: 1px skyblue solid;
   padding: 32px 60px;
   display: flex;
   flex-direction: ${({ flexdirection }) => flexdirection};
+  justify-content: ${({ justifyContent }) =>
+    justifyContent === JUSTIFY_CONTENT_ENUM.NONE ? '' : justifyContent};
 
   gap: ${({ gap }) => `${gap}px`};
 
-  width: 80%;
-  height: 200px;
+  width: 1200px;
+  height: 500px;
+  margin-left: 100px;
   li {
     list-style-type: none;
     list-style: none;

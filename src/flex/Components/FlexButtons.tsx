@@ -1,25 +1,36 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import styled from 'styled-components';
-import { FLEX_DIRECTION_ENUM } from '../FlexList';
+import { FLEX_DIRECTION_ENUM, JUSTIFY_CONTENT_ENUM } from '../types';
 
 const FlexButtons = ({
-  flexDirections,
-  setFlexDirection,
+  subtitle,
+  buttonNames,
+  setStyle,
 }: {
-  flexDirections: (typeof FLEX_DIRECTION_ENUM)[keyof typeof FLEX_DIRECTION_ENUM][];
-  setFlexDirection: Dispatch<
-    SetStateAction<'rows' | 'column' | 'row-reverse' | 'column-reverse'>
-  >;
+  subtitle: string;
+  buttonNames:
+    | (typeof FLEX_DIRECTION_ENUM)[keyof typeof FLEX_DIRECTION_ENUM][]
+    | (typeof JUSTIFY_CONTENT_ENUM)[keyof typeof JUSTIFY_CONTENT_ENUM][];
+  setStyle:
+    | Dispatch<
+        SetStateAction<
+          (typeof FLEX_DIRECTION_ENUM)[keyof typeof FLEX_DIRECTION_ENUM]
+        >
+      >
+    | Dispatch<
+        SetStateAction<
+          (typeof JUSTIFY_CONTENT_ENUM)[keyof typeof JUSTIFY_CONTENT_ENUM]
+        >
+      >;
 }) => {
   return (
     <Wrapper>
-      <Title>
-        button을 클릭하면 <strong>flex-direction</strong> 속성이 변경됩니다.
-      </Title>
+      <Title>{subtitle}</Title>
+
       <ButtonWrapper>
-        {flexDirections.map((flexDirection, i) => (
-          <Button onClick={() => setFlexDirection(flexDirection)} key={i}>
-            {flexDirection}
+        {buttonNames.map((buttonName, i) => (
+          <Button onClick={() => setStyle(buttonName as any)} key={i}>
+            {buttonName}
           </Button>
         ))}
       </ButtonWrapper>
@@ -31,20 +42,26 @@ export default FlexButtons;
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-wrap: wrap;
+  margin-left: 100px;
+  width: 600px;
+
   gap: 15px;
+`;
+
+const Title = styled.h2`
+  text-align: center;
+
+  width: 200px;
 `;
 
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+
   gap: 15px;
 `;
 const Button = styled.button`
   width: 150px;
-`;
-
-const Title = styled.h2`
-  text-align: center;
 `;

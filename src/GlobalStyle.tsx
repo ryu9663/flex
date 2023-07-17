@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
@@ -11,3 +13,20 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export default GlobalStyle;
+
+export const Row = styled.div<{ justifyContent?: string; alignItems?: string }>`
+  display: flex;
+  flex-direction: row;
+  justify-content: ${({ justifyContent }) => justifyContent || ''};
+  align-items: ${({ alignItems }) => alignItems || ''};
+`;
+
+export const Column = styled.div<{
+  justifyContent?: string;
+  alignItems?: string;
+}>`
+  display: flex;
+  flex-direction: column;
+  justify-content: ${({ justifyContent }) => justifyContent || ''};
+  align-items: ${({ alignItems }) => alignItems || ''};
+`;
